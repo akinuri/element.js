@@ -62,7 +62,6 @@ Parlement.parsed2js = function parsed2js(parsed, level) {
     else if (parsed.textContent != null || parsed.children.length) {
         js.left += ", null";
     }
-    
     if (parsed.textContent != null) {
         js.children += ", " + parsed.textContent.quote();
     }
