@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+
+<google>
+    <div class="content" id="main">
+        <span class="ctr-p" id="body">
+            <center>
+                <div style="height:233px;margin-top:89px" id="lga">
+                    <img alt="Google" height="92" width="272" id="hplogo" src="/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" />
+                </div>
+            </center>
+        </span>
+    </div>
+</google>
+
+<stackoverflow>
+    <div class="-main">
+        <a href="#" class="left-sidebar-toggle p0 ai-center jc-center js-left-sidebar-toggle">
+            <span class="ps-relative"></span>
+        </a>
+        <a href="https://stackoverflow.com" class="-logo js-gps-track">
+            <span class="-img _glyph">Stack Overflow</span>
+        </a>
+    </div>
+</stackoverflow>
+
+<github>
+    <ul class="list-style-none d-flex text-gray">
+        <li class="mr-3">© 2019 GitHub, Inc.</li>
+        <li class="mr-3">
+            <a href="/site/terms" data-ga-click="Footer, go to terms, text:terms" class="link-gray">Terms</a>
+        </li>
+        <li>
+            <a href="/site/privacy" data-ga-click="Footer, go to privacy, text:privacy" class="link-gray">Privacy</a>
+        </li>
+    </ul>
+</github>
+
+<script src="html2js.js"></script>
+<script src="element.js"></script>
+
+<script>
+    var googleJS = html2js(document.body.getElementsByTagName("google")[0]);
+    var soJS     = html2js(document.body.getElementsByTagName("stackoverflow")[0]);
+    var githubJS = html2js(document.body.getElementsByTagName("github")[0]);
+    
+    console.log(googleJS);
+    console.log(soJS);
+    console.log(githubJS);
+</script>
+
+</body>
+</html>
