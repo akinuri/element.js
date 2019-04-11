@@ -89,7 +89,7 @@ For example, let's say I have the following HTML (from StackOverflow):
 
 If I do `html2js(document.querySelector(".-main"))`, I'll get the following:
 
-```javascript
+```
 "elem("div", {"class":"-main"}, [
     elem("a", {"href":"#","class":"left-sidebar-toggle p0 ai-center jc-center js-left-sidebar-toggle"}, [
         elem("span", {"class":"ps-relative"}),
