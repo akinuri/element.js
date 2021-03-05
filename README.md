@@ -43,13 +43,13 @@ elem(tagName, attributes, children, isHTML)
 ```
 * `tagName` : tag name of the element
 * `attributes` : object with `property : value` pairs
-* `children` : child(ren) element(s); can be a `string`, an `element`, or an `array` of `strings` and/or `elements`
+* `children` : an item (that can be a `string`, `number`, `HTMLElement`) or an array of items
 * `isHTML` (optional) : if the `children` is a string, but contains (or is) HTML, this should be set to `true`
 
 ## Usage
 
 ```javascript
-var html = elem("ul", {"id":"mylist"}, [
+var html = elem("ul", {"id" : "mylist"}, [
     elem("li", null, "Item 1"),
     elem("li", null, "Item 2"),
     elem("li", null, "Item 3"),
@@ -100,3 +100,6 @@ If I do `html2js(document.querySelector(".-main"))`, I'll get the following:
 ])"
 ```
 Now, I can get rid of the quotes and use this to create HTML (again :).
+
+# [HTMLElement.php](https://github.com/akinuri/HTMLElement.php)
+I also needed a PHP equivalent of element.js and the HTMLElement (object/class). I'm not sure when I wrote this, but it was probably in mid 2019. I suggest you check it out, too.
