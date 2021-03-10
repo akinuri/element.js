@@ -5,12 +5,6 @@
 </head>
 <body>
 
-<ul id="mylist">
-    <li>Item 1</li>
-    <li>Item 2</li>
-    <li>Item 3</li>
-</ul>
-
 <google>
     <div class="content" id="main">
         <span class="ctr-p" id="body">
@@ -50,6 +44,23 @@
 <script src="element.js"></script>
 
 <script>
+    
+    let myList = elem("ul",
+        {
+            "id" : "my-list",
+            "onmouseenter" : "this.style.backgroundColor='gainsboro'",
+            "onmouseleave" : "this.style.backgroundColor=''",
+            "onclick" : function toggleTextColor(e) {
+                this.style.color = this.style.color == "" ? "red" : "";
+            },
+        }, [
+        elem("li", null, "Item 1"),
+        elem("li", null, "Item 2"),
+        elem("li", null, "Item 3"),
+    ]);
+    
+    document.body.insertBefore(myList, document.body.firstElementChild);
+    
     var googleJS = html2js(document.body.getElementsByTagName("google")[0]);
     var soJS     = html2js(document.body.getElementsByTagName("stackoverflow")[0]);
     var githubJS = html2js(document.body.getElementsByTagName("github")[0]);
@@ -57,6 +68,7 @@
     console.log(googleJS);
     console.log(soJS);
     console.log(githubJS);
+    
 </script>
 
 </body>

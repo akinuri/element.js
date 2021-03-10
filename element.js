@@ -1,6 +1,7 @@
 if (typeof elem == "undefined") {
     
     var elem = function (tagName, attributes, children, isHTML) {
+        
         let parent;
         
         if (typeof tagName == "string") {
@@ -10,9 +11,36 @@ if (typeof elem == "undefined") {
         }
         
         if (attributes) {
+            
             for (let attribute in attributes) {
-                parent.setAttribute(attribute, attributes[attribute]);
+                
+                if (attribute.startsWith("on")) {
+                    
+                    let callback = attributes[attribute];
+                    
+                    if (typeof callback == "string") {
+                        parent.setAttribute(attribute, callback);
+                    }
+                    else if (typeof callback == "function") {
+                        
+                        let eventMatch = attribute.match(/^on([a-zA-Z]+)/);
+                        if (eventMatch) {
+                            let event = eventMatch[1];
+                            // TODO: make sure it's a valid event?
+                            parent.addEventListener(event, callback);
+                            parent.eventListeners = parent.eventListeners || {};
+                            parent.eventListeners[event] = parent.eventListeners[event] || [];
+                            parent.eventListeners[event].push(callback);
+                        }
+                        
+                    }
+                    
+                } else {
+                    parent.setAttribute(attribute, attributes[attribute]);
+                }
+                
             }
+            
         }
         
         var isHTML = isHTML || null;
