@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <style>
+        google, stackoverflow, github { display: none; }
+    </style>
 </head>
 <body>
 
@@ -61,9 +64,9 @@
     
     document.body.insertBefore(myList, document.body.firstElementChild);
     
-    var googleJS = html2js(document.body.getElementsByTagName("google")[0]);
-    var soJS     = html2js(document.body.getElementsByTagName("stackoverflow")[0]);
-    var githubJS = html2js(document.body.getElementsByTagName("github")[0]);
+    var googleJS = html2js(document.body.getElementsByTagName("google")[0].children[0]);
+    var soJS     = html2js(document.body.getElementsByTagName("stackoverflow")[0].children[0]);
+    var githubJS = html2js(document.body.getElementsByTagName("github")[0].children[0]);
     
     console.log(googleJS);
     console.log(soJS);

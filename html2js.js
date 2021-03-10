@@ -1,8 +1,8 @@
 String.prototype.quote = function () {
-    console.warn("String.prototype has been extended with .quote() method.");
-    return function (quote) {
-        var quote = quote || "\"";
-        return quote + this + quote;
+    console.info("[Info] String.prototype has been extended with a method: quote(quoteChar = '\"')");
+    return function quote(quoteChar = "\"") {
+        quoteChar = quoteChar || "\"";
+        return quoteChar + this + quoteChar;
     }
 }();
 
