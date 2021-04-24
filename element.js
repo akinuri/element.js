@@ -1,6 +1,6 @@
 if (typeof elem == "undefined") {
     
-    var elem = function (tagName, attributes, children, isHTML) {
+    function elem(tagName, attributes, children, isHTML) {
         
         let parent;
         
@@ -8,6 +8,20 @@ if (typeof elem == "undefined") {
             parent = document.createElement(tagName);
         } else if (tagName instanceof HTMLElement) {
             parent = tagName;
+        }
+        
+        // I'm tired of using null as the attributes, e.g.: elem("div", null, ["some", "elements"])
+        // Wouldn't it be nice if I could just do: elem("div", ["some", "elements"])
+        // attributes expects a plain object; we can use that to differentiate
+        if (typeof attributes != "undefined" && ["undefined", "boolean"].includes(typeof children) && typeof isHTML == "undefined") {
+            let attrType = typeof attributes;
+            if (["string", "number"].includes(attrType)
+                || (attrType == "object" && attributes instanceof Array)
+                || (attrType == "object" && attributes instanceof HTMLElement) ) {
+                isHTML = children;
+                children = attributes;
+                attributes = null;
+            }
         }
         
         if (attributes) {
@@ -43,9 +57,10 @@ if (typeof elem == "undefined") {
             
         }
         
-        var isHTML = isHTML || null;
+        // console.log(attributes);
+        // console.log(children);
         
-        if (children || children == 0) {
+        if (typeof children != "undefined" || children === 0) {
             elem.append(parent, children, isHTML);
         }
         
@@ -97,7 +112,7 @@ if (typeof elem == "undefined") {
     if (typeof elem == "function" && typeof elem.hasOwnProperty("append")) {
         console.warn("elem() is already initialized.");
     } else {
-        console.warn("elem name is already in use by some other script.");
+        console.warn("The name \"elem\" is already in use by some other script.");
     }
     
 }

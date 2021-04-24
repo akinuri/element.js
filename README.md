@@ -5,16 +5,17 @@ An alternative (to document.createElement) way to dynamically create HTML.
 There are several ways to dynamically create HTML. One of them is using multiline strings:
 
 ```javascript
-var html = `<ul id="mylist">
+var mylist = `<ul id="mylist">
     <li>Item 1</li>
     <li>Item 2</li>
     <li>Item 3</li>
 </ul>`;
 ```
+
 Another way is to use `+` seperated strings:
 
 ```javascript
-var html = '<ul id="mylist">'+
+var mylist = '<ul id="mylist">'+
 '    <li>Item 1</li>'+
 '    <li>Item 2</li>'+
 '    <li>Item 3</li>'+
@@ -24,13 +25,13 @@ var html = '<ul id="mylist">'+
 One can also use the DOM API to create HTML:
 
 ```javascript
-var html = document.createElement("ul");
+var mylist = document.createElement("ul");
 ul.id = "mylist";
 var li_1 = document.createElement("li");
 li_1.textContent = "Item 1";
 var li_2 = document.createElement("li");
 //...
-html.appendChild(li_1);
+mylist.appendChild(li_1);
 //...
 ```
 
@@ -42,17 +43,17 @@ None of these methods works for me. I needed a more easier, compact, manageable 
 elem(tagName, attributes, children, isHTML)
 ```
 * `tagName` : tag name of the element
-* `attributes` : object with `property : value` pairs
-* `children` : an item (that can be a `string`, `number`, `HTMLElement`) or an array of items
-* `isHTML` (optional) : if the `children` is a string, but contains (or is) HTML, this should be set to `true`
+* `attributes` : object with `property : value` pairs (optional, and can be skipped)
+* `children` : an item (that can be a `string`, `number`, `HTMLElement`) or an array of items (optional)
+* `isHTML` : if the `children` is a string, but contains (or is) HTML, this should be set to `true` (optional)
 
 ## Usage
 
 ```javascript
-var html = elem("ul", {"id" : "mylist"}, [
+var mylist = elem("ul", {"id" : "mylist"}, [
     elem("li", null, "Item 1"),
-    elem("li", null, "Item 2"),
-    elem("li", null, "Item 3"),
+    elem("li", "Item 2"),
+    elem("li", "Item 3"),
 ]);
 ```
 

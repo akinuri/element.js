@@ -48,7 +48,7 @@
 
 <script>
     
-    let myList = elem("ul",
+    let mylist = elem("ul",
         {
             "id" : "my-list",
             "onmouseenter" : "this.style.backgroundColor='gainsboro'",
@@ -58,11 +58,11 @@
             },
         }, [
         elem("li", null, "Item 1"),
-        elem("li", null, "Item 2"),
-        elem("li", null, "Item 3"),
+        elem("li", "Item 2"),
+        elem("li", "Item 3"),
     ]);
     
-    document.body.insertBefore(myList, document.body.firstElementChild);
+    document.body.insertBefore(mylist, document.body.firstElementChild);
     
     var googleJS = html2js(document.body.getElementsByTagName("google")[0].children[0]);
     var soJS     = html2js(document.body.getElementsByTagName("stackoverflow")[0].children[0]);
