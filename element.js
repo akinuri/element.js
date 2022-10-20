@@ -1,3 +1,5 @@
+"use strict"; // silly safari
+
 if (typeof elem == "undefined") {
     
     function elem(tagName, attributes, children, isHTML) {
@@ -57,9 +59,6 @@ if (typeof elem == "undefined") {
             
         }
         
-        // console.log(attributes);
-        // console.log(children);
-        
         if (typeof children != "undefined" || children === 0) {
             elem.append(parent, children, isHTML);
         }
@@ -107,9 +106,11 @@ if (typeof elem == "undefined") {
         }
     };
     
+    window.elem = elem;
+    
 } else {
     
-    if (typeof elem == "function" && typeof elem.hasOwnProperty("append")) {
+    if (typeof elem == "function" && elem.hasOwnProperty("append")) {
         console.warn("elem() is already initialized.");
     } else {
         console.warn("The name \"elem\" is already in use by some other script.");
